@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - CarFueling",
+            "request": "launch",
+            "mainClass": "CarFueling",
+            "projectName": "coursera_610d13d9"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - Fibonacci",
             "request": "launch",
             "mainClass": "Fibonacci",
