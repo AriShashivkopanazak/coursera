@@ -1,5 +1,3 @@
-package com.coursera.ari.week3;
-
 import java.util.Scanner;
 
 public class CarFueling {
@@ -15,13 +13,13 @@ public class CarFueling {
             for (int stop : stops) {
                 if (stop <= currentTank) {
                     previousStop = stop;
-                    stopVar = stop;
                 } else {
+                    stopVar = stop;
                     break;
                 }
             }
             currentTank = previousStop + tank;
-            if (currentTank < stopVar || currentTank < dist) {
+            if (currentTank < stopVar) {
                 return -1;
             }
             numRefills++;

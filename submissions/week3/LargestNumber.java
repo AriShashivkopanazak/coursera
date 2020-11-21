@@ -1,5 +1,3 @@
-package com.coursera.ari.week3;
-
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;

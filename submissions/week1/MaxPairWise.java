@@ -1,35 +1,30 @@
-package com.coursera.ari;
-
-import com.coursera.ari.week1.MaxPairWise;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class Main {
-    static int getMaxPairwiseProduct(int[] numbers) {
-        int max_product =  0;
-        int first = Integer.MIN_VALUE;
-        int second = Integer.MIN_VALUE;
+public class MaxPairWise {
+
+    static long getMaxPairwiseProduct(int[] numbers) {
+        long max_product;
+        long first = 0;
+        long second = 0;
+        int firstIndex = Integer.MIN_VALUE;
 
         int i = 0;
         while(i < numbers.length) {
-            if (first <= numbers[i] ) {
+            if (first < numbers[i] ) {
+                firstIndex = i;
                 first = numbers[i];
-            } else {
-                break;
             }
             i++;
         }
 
-
         int j = 0;
         while(j < numbers.length) {
-            if (second != numbers[i] && second <= numbers[j] ) {
+            if (j != firstIndex && second <= numbers[j] ) {
                 second = numbers[j];
-
             }
             j++;
         }
@@ -40,7 +35,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        MaxPairWise.FastScanner scanner = new MaxPairWise.FastScanner(System.in);
+        FastScanner scanner = new FastScanner(System.in);
         int n = scanner.nextInt();
         int[] numbers = new int[n];
         for (int i = 0; i < n; i++) {
@@ -49,11 +44,11 @@ public class Main {
         System.out.println(getMaxPairwiseProduct(numbers));
     }
 
-    static class FastScanner {
+    public static class FastScanner {
         BufferedReader br;
         StringTokenizer st;
 
-        FastScanner(InputStream stream) {
+        public FastScanner(InputStream stream) {
             try {
                 br = new BufferedReader(new
                         InputStreamReader(stream));
@@ -73,8 +68,9 @@ public class Main {
             return st.nextToken();
         }
 
-        int nextInt() {
+        public int nextInt() {
             return Integer.parseInt(next());
         }
     }
 }
+
