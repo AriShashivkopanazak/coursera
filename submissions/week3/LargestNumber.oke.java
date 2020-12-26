@@ -12,7 +12,13 @@ public class LargestNumber {
             if (Integer.parseInt(currentDigitList[i]) > Integer.parseInt(currentMaxDigitList[i])) {
                 return true;
             } else if (Integer.parseInt(currentDigitList[i]) == Integer.parseInt(currentMaxDigitList[i])) {
-                return currentDigitList.length <= currentMaxDigitList.length;
+                if (currentMaxDigitList.length > maxIterations) {
+                    return !(Integer.parseInt(currentDigitList[i]) > Integer.parseInt(currentMaxDigitList[i + 1]));
+                } else if (currentDigitList.length > currentMaxDigitList.length) {
+                    return !(Integer.parseInt(currentMaxDigitList[i]) > Integer.parseInt(currentDigitList[i + 1]));
+                } else {
+                    return true;
+                }
             }
         }
         return false;

@@ -1,3 +1,5 @@
+package com.coursera.ari.week4;
+
 import java.util.*;
 import java.io.*;
 
@@ -9,8 +11,27 @@ public class MajorityElement {
         if (left + 1 == right) {
             return a[left];
         }
+
+        int majority = a.length / 2;
+
+        for (int prev : a) {
+            int counter = 0;
+            for (int element : a) {
+                if (counter >= majority) {
+                    return 1;
+                } else if (element == prev) {
+                    counter++;
+                }
+            }
+        }
+
+
+
         //write your code here
         return -1;
+
+
+
     }
 
     public static void main(String[] args) {
@@ -26,6 +47,7 @@ public class MajorityElement {
             System.out.println(0);
         }
     }
+
     static class FastScanner {
         BufferedReader br;
         StringTokenizer st;

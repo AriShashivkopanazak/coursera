@@ -13,13 +13,13 @@ public class CarFueling {
             for (int stop : stops) {
                 if (stop <= currentTank) {
                     previousStop = stop;
-                } else {
                     stopVar = stop;
+                } else {
                     break;
                 }
             }
             currentTank = previousStop + tank;
-            if (currentTank < stopVar) {
+            if (currentTank < stopVar || currentTank < dist) {
                 return -1;
             }
             numRefills++;

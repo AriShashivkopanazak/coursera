@@ -5,14 +5,13 @@ import java.util.Scanner;
 
 public class LargestNumber {
     private static Boolean isGreaterOrEqual(String digit, int maxDigit) {
+        int maxIterations;
         String[] currentDigitList = digit.split("");
         String[] currentMaxDigitList = String.valueOf(maxDigit).split("");
-        int maxIterations = Math.min(currentDigitList.length, currentMaxDigitList.length);
+        maxIterations = Math.min(currentDigitList.length, currentMaxDigitList.length);
         for (int i = 0 ; i < maxIterations ; i++) {
-            if (Integer.parseInt(currentDigitList[i]) > Integer.parseInt(currentMaxDigitList[i])) {
+            if (Integer.parseInt(currentDigitList[i]) >= Integer.parseInt(currentMaxDigitList[i])) {
                 return true;
-            } else if (Integer.parseInt(currentDigitList[i]) == Integer.parseInt(currentMaxDigitList[i])) {
-                return currentDigitList.length <= currentMaxDigitList.length;
             }
         }
         return false;
@@ -30,7 +29,6 @@ public class LargestNumber {
                     maxDigitIndex = digit;
                 }
             }
-
             result.append(maxDigit);
             digitList.remove(maxDigitIndex);
         }

@@ -1,9 +1,10 @@
 package com.coursera.ari.week3;
 
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class CarFueling {
-    static int computeMinRefills(int dist, int tank, int[] stops) {
+    static int computeMinRefillsOld(int dist, int tank, int[] stops) {
         // answer
         int numRefills = 0;
         // stores distance of the last stop
@@ -26,6 +27,26 @@ public class CarFueling {
             }
             numRefills++;
         }
+
+        return numRefills;
+    }
+
+    static int computeMinRefills(int dist, int tank, int[] stops) {
+        List<Integer> stopList = Arrays.stream(stops).boxed().collect(Collectors.toList());
+
+        int numRefills = 0;
+        int currentRefill = tank;
+        while (currentRefill < dist) {
+           for (int stop : stopList) {
+               if (!(stop <= currentRefill)) {
+                   numRefills++;
+                   break;
+               }
+           }
+            //currentRefill = stop + tank;
+
+        }
+
 
         return numRefills;
     }

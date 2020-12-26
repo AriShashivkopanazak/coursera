@@ -5,14 +5,16 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
-
 public class LargestNumber {
     private static Boolean isGreaterOrEqual(String digit, int maxDigit) {
         String[] currentDigitList = digit.split("");
         String[] currentMaxDigitList = String.valueOf(maxDigit).split("");
-        for (int i = 0 ; i < currentDigitList.length || i < currentMaxDigitList.length ; i++) {
-            if (Integer.parseInt(currentDigitList[i]) >= Integer.parseInt(currentMaxDigitList[i])) {
+        int maxIterations = Math.min(currentDigitList.length, currentMaxDigitList.length);
+        for (int i = 0 ; i < maxIterations ; i++) {
+            if (Integer.parseInt(currentDigitList[i]) > Integer.parseInt(currentMaxDigitList[i])) {
                 return true;
+            } else if (Integer.parseInt(currentDigitList[i]) == Integer.parseInt(currentMaxDigitList[i])) {
+                return currentDigitList.length <= currentMaxDigitList.length;
             }
         }
         return false;
@@ -30,10 +32,10 @@ public class LargestNumber {
                     maxDigitIndex = digit;
                 }
             }
+
             result.append(maxDigit);
             digitList.remove(maxDigitIndex);
         }
-
         return result.toString();
     }
 
